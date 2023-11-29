@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from lab_2.lab_2 import NN
+from lab_1.lab_1 import Perceptron2
 
 error = None
 
@@ -28,7 +28,16 @@ inputSize = X.shape[1]  # количество входных сигналов �
 hiddenSizes = 10  # задаем число нейронов скрытого (А) слоя
 outputSize = 1 if len(y.shape) else y.shape[1]  # количество выходных сигналов равно количеству классов задачи
 
-nn = NN(X, y)
+perceptron = Perceptron2(inputSize, hiddenSizes, outputSize)
 
-for i in range(1):
-    nn.train()
+while not __check_is_stop_train(perceptron):
+    perceptron.train(X, y)
+    y = df.iloc[:, 4].values
+    y = np.where(y == "Iris-setosa", 1, -1)
+    X = df.iloc[:, [0, 2]].values
+    out, hidden_predict = perceptron.predict(X)
+
+    error = sum(out - y.reshape(-1, 1))
+
+print(perceptron.Wout)
+print(f'Error: {error}')

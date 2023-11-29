@@ -32,7 +32,3 @@ class Perceptron2:
             self.w_matrix_map[weight_matrix_key] += 1
         else:
             self.w_matrix_map[weight_matrix_key] = 1
-
-    # def print_repeated_weights(self):
-    #     for k, v in self.w_matrix_map.items():
-    #         print(f'{k}: {v}')
