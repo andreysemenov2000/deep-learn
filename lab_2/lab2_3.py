@@ -9,7 +9,7 @@ df = pd.read_csv('../data.csv')
 df = df.iloc[np.random.permutation(len(df))]
 y = df.iloc[0:100, 4].values
 y = LabelEncoder().fit_transform(y)
-X = df.iloc[0:100, [0, 2]].values
+X = df.iloc[0:100, 0:3].values
 y_encoded = np.eye(3)[y]
 
 # Деление данных на обучающую и тестовую выборки
@@ -90,7 +90,7 @@ class NeuralNetwork:
         accuracy = np.mean(predictions_rounded == Y)
 
         print(accuracy)
-        return accuracy >= 0.8
+        return accuracy >= 0.95
 
     def save_weight_matrix(self):
         weights_list = list(self.W_output.reshape(-1)) + list(self.W_hidden.reshape(-1))
