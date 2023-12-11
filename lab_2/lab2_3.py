@@ -60,6 +60,9 @@ class NeuralNetwork:
 
     def train(self, X, y, learning_rate):
         while not self.check_is_stop_train(X, y):
+            randIndexes =np.random.permutation(len(y))
+            X = X[randIndexes]
+            y = y[randIndexes]
             # Стохастический градиентный спуск
             for j in range(len(X)):
                 X_sample = X[j].reshape(1, -1)

@@ -69,9 +69,10 @@ df = df.iloc[np.random.permutation(len(df))]
 
 df = df.iloc[np.random.permutation(len(df))]
 y = df.iloc[0:100, 4].values
+y = np.where(y == "Iris-setosa", 1, -1)
 y = LabelEncoder().fit_transform(y)
-X = df.iloc[0:100, 0:3].values
-Y = np.eye(3)[y]
+X = df.iloc[0:100, 0:2].values
+Y = np.eye(2)[y]
 
 # Деление данных на обучающую и тестовую выборки
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
